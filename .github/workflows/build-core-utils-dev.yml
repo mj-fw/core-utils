@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Change working directory
-        run: echo "##[set-env name=CARGO_WORKSPACE;]$(pwd)/src"
+        run: echo "CARGO_WORKSPACE=$(pwd)/src" >> $GITHUB_ENV
 
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
@@ -29,7 +29,7 @@ jobs:
 
       - name: Build
         env:
-          CARGO_MANIFEST_PATH: ${{ github.workspace }}/Cargo.toml
+          CARGO_MANIFEST_PATH: ${{ env.CARGO_WORKSPACE }}/Cargo.toml
         uses: actions-rs/cargo@v1
         with:
           command: build

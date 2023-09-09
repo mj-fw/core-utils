@@ -1,3 +1,3 @@
 fn main() {
-    println!("mjfw - Version 0.1");
+    println!("mjFW - Version 0.1");
 }

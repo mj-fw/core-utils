@@ -2,3 +2,4 @@
 members = [
     "mjfw-version"
 ]
+resolver = "2"

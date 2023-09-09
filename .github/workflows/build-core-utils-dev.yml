@@ -16,6 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install ARM cross-compilation toolchain
+        run: sudo apt-get install gcc-aarch64-linux-gnu
+
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:

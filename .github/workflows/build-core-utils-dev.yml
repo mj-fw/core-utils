@@ -16,9 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Change working directory
-        run: echo "CARGO_WORKSPACE=$(pwd)/src" >> $GITHUB_ENV
-
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
@@ -28,12 +25,10 @@ jobs:
           override: true
 
       - name: Build
-        env:
-          CARGO_MANIFEST_PATH: ${{ env.CARGO_WORKSPACE }}/Cargo.toml
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target ${{ matrix.target }}
+          args: --release --target ${{ matrix.target }} src/Cargo.toml
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2

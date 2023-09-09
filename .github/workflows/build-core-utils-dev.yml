@@ -28,7 +28,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target ${{ matrix.target }} src/Cargo.toml
+          args: --release --target ${{ matrix.target }} --manifest-path ./src/Cargo.toml
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
